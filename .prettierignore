@@ -1,0 +1,7 @@
+build/
+config/
+coverage/
+node_modules/
+public/
+package.json
+yarn.lock
