@@ -4,3 +4,4 @@ export { default as Select } from './Select/Select';
 export { default as Scores } from './Scores/Scores';
 export { default as Spinner } from './Spinner/Spinner.styled';
 export { default as Label } from './Label/Label.styled';
+export { default as ThemeSwitcher } from './ThemeSwitcher/ThemeSwitcher';

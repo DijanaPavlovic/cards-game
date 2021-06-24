@@ -3,8 +3,6 @@ import styled from 'styled-components';
 import { Button } from 'components';
 
 export const Page = styled.div`
-  background: var(--background);
-  background-image: var(--background-image);
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -20,7 +18,7 @@ export const Form = styled.form`
   width: calc(100% - var(--spacing-s));
   padding: var(--spacing-m);
   border-radius: var(--border-radius-xs);
-  background: var(--primary-light);
+  background: ${({ theme }) => theme.primaryLight};
   box-shadow: var(--shadow-card);
   display: flex;
   flex-direction: column;

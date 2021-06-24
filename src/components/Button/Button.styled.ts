@@ -4,7 +4,7 @@ import { device } from 'breakpoints';
 
 export const ButtonBase = styled.button`
   padding: var(--spacing-xxs) var(--spacing-xs);
-  background: var(--primary-dark);
+  background: ${({ theme }) => theme.primaryDark};
   border: none;
   border-radius: var(--border-radius-s);
   color: var(--white);
@@ -19,7 +19,7 @@ export const ButtonBase = styled.button`
 
   :focus:not(:disabled),
   :hover:not(:disabled) {
-    background: var(--primary);
+    background: ${({ theme }) => theme.primary};
     box-shadow: var(--shadow-element);
   }
 

@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 
 import { robotsOptions, RobotsValues } from 'globalConstants';
 import { startGame } from 'store/actionCreators';
-import { Input, Select } from 'components';
+import { Input, Select, ThemeSwitcher } from 'components';
 import { Page, Form, SubmitButton } from './StartGame.styled';
 
 interface FormValues {
@@ -31,6 +31,7 @@ const StartGameForm = (): React.ReactElement => {
       <Helmet>
         <title>Cards Game | Home</title>
       </Helmet>
+      <ThemeSwitcher />
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Input
           label='NAME:'

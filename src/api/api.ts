@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 import {
   GetNewDeckResponse,
   GetPlayerCardsResponse,
@@ -7,30 +9,20 @@ import {
 
 const baseURL = 'https://deckofcardsapi.com/api/deck';
 
-export const getNewDeck = async (): Promise<GetNewDeckResponse> => {
-  const response = await fetch(`${baseURL}/new/shuffle`);
-  const result = response.json();
-  return result;
-};
+export const getNewDeck = async (): Promise<GetNewDeckResponse> =>
+  axios.get(`${baseURL}/new/shuffle`);
 
 export const getPlayerCards = async (
   deckId: string,
   cardNumber: string,
-): Promise<GetPlayerCardsResponse> => {
-  const response = await fetch(`${baseURL}/${deckId}/draw/?count=${cardNumber}`);
-  const result = await response.json();
-  return result;
-};
+): Promise<GetPlayerCardsResponse> => axios.get(`${baseURL}/${deckId}/draw/?count=${cardNumber}`);
 
 export const createPlayerPile = async (
   deckId: string,
   pileName: string,
   cards: string,
-): Promise<CreatePlayerPileResponse> => {
-  const response = await fetch(`${baseURL}/${deckId}/pile/${pileName}/add?cards=${cards}`);
-  const result = await response.json();
-  return result;
-};
+): Promise<CreatePlayerPileResponse> =>
+  axios.get(`${baseURL}/${deckId}/pile/${pileName}/add?cards=${cards}`);
 
 export const drawCardFromPile = async (
   deckId: string,
@@ -39,7 +31,5 @@ export const drawCardFromPile = async (
 ): Promise<DrawCardFromPileResponse> => {
   const queryParams = card ? `cards=${card}` : 'count=1';
 
-  const response = await fetch(`${baseURL}/${deckId}/pile/${pileName}/draw/?${queryParams}`);
-  const result = await response.json();
-  return result;
+  axios.get(`${baseURL}/${deckId}/pile/${pileName}/draw/?${queryParams}`);
 };

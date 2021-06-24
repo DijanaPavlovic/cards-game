@@ -12,7 +12,6 @@ export const SelectBase = styled.select`
   padding: var(--spacing-tiny);
   border-radius: var(--border-radius-xs);
   border: none;
-  color: var(--primary-dark);
   position: relative;
   font-size: 0.9rem;
 

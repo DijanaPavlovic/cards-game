@@ -15,7 +15,7 @@ export const InputField = styled.input`
   font-size: 0.9rem;
 
   ::placeholder {
-    color: var(--primary-dark);
+    color: ${({ theme }) => theme.primaryDark};
     opacity: 0.4;
   }
 
