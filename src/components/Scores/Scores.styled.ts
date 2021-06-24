@@ -18,10 +18,10 @@ export const Field = styled.div`
 export const Name = styled.p`
   display: flex;
   margin-right: var(--spacing-tiny);
-  color: var(--primary-light);
+  color: ${({ theme }) => theme.primaryLight};
 `;
 
 export const Score = styled.p`
-  color: var(--primary-light);
+  color: ${({ theme }) => theme.primaryLight};
   font-weight: bold;
 `;

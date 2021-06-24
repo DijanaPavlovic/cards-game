@@ -1,6 +1,27 @@
-import { createGlobalStyle } from 'styled-components';
+import { useContext } from 'react';
+import { ThemeProvider, createGlobalStyle, DefaultTheme } from 'styled-components';
 
+import { ThemeContext } from 'contexts/ThemeContext/ThemeContext';
 import { device } from 'breakpoints';
+
+interface Themes {
+  [key: string]: DefaultTheme;
+}
+
+export const themes: Themes = {
+  green: {
+    primary: '#365b5b',
+    primaryDark: '#2f4f4f',
+    primaryLight: '#c4ddd9',
+    backgroundImage: 'linear-gradient(to right top, #2f4f4f, #305654, #325d59, #34645e, #366b62)',
+  },
+  pink: {
+    primary: '#cf5200',
+    primaryDark: '#9c3e00',
+    primaryLight: '#ffc29b', // ffd2b4
+    backgroundImage: 'linear-gradient(to right top, #9c3e00, #a84300, #b54800, #c24d00, #cf5200);',
+  },
+};
 
 const GlobalStyles = createGlobalStyle`
   *:focus {
@@ -9,6 +30,7 @@ const GlobalStyles = createGlobalStyle`
 
   *, *:before, *:after {
     box-sizing: border-box;
+    transition: all 0.5s;
   }
 
   html {
@@ -27,13 +49,8 @@ const GlobalStyles = createGlobalStyle`
     line-height: 1.25rem;
     letter-spacing: 0.0125em;
 
-    background: var(--background);
-    background-image: var(--background-image);
+    background-image: ${({ theme }) => theme.backgroundImage};
 
-    --primary: #365b5b;
-    --primary-dark: #2f4f4f;
-    --primary-light: #C4DDD9;
-    --primary-focus: #365b5b;
     --white: #ffffff;
 
     --shadow-card: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
@@ -49,9 +66,6 @@ const GlobalStyles = createGlobalStyle`
 
     --border-radius-s: 24px;
     --border-radius-xs: 4px;
-
-    --background: rgb(47, 79, 79);
-    --background-image: linear-gradient(to right top, #2f4f4f, #305654, #325d59, #34645e, #366b62);
   }
 
   #root {
@@ -68,4 +82,15 @@ const GlobalStyles = createGlobalStyle`
   }
 `;
 
-export default GlobalStyles;
+const Theme = ({ children }: { children: React.ReactNode }): React.ReactElement => {
+  const { theme } = useContext(ThemeContext);
+
+  return (
+    <ThemeProvider theme={themes[theme]}>
+      <GlobalStyles />
+      {children}
+    </ThemeProvider>
+  );
+};
+
+export default Theme;
