@@ -1,4 +1,5 @@
 import React, { useCallback } from 'react';
+import { Helmet } from 'react-helmet';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { startGame, resetGame } from 'store/actionCreators';
@@ -44,6 +45,9 @@ const GameSummary = (): React.ReactElement => {
 
   return (
     <Page>
+      <Helmet>
+        <title>Cards Game | Summary</title>
+      </Helmet>
       <Container>
         {winner.name === playerName ? (
           <>

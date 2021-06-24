@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 
@@ -27,6 +28,9 @@ const StartGameForm = (): React.ReactElement => {
 
   return (
     <Page>
+      <Helmet>
+        <title>Cards Game | Home</title>
+      </Helmet>
       <ThemeSwitcher />
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Input
