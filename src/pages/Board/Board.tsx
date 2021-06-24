@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { drawCard } from 'store/actionCreators';
@@ -59,6 +60,9 @@ const Board = (): React.ReactElement => {
 
   return (
     <Container>
+      <Helmet>
+        <title>Cards Game | Game in progress</title>
+      </Helmet>
       <Scores scores={scores} />
       <Cards hasCardsOnTheTable={hasCardsOnTheTable}>
         {Object.entries(decks).map(([name, { cardsInHand, playedCard }]) =>
